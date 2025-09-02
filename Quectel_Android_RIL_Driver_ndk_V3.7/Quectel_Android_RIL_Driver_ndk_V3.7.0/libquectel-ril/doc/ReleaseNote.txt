@@ -1,0 +1,249 @@
+Release Notes
+[Quectel_Android_RIL_Driver_V3.5.04]
+1. Modify signal acquisition mainly by AT+QCSQ command to obtain, adjust the 5G rsrp signal reported filling.
+2. When QMICTL_SYNC_REQ is sent, sometimes the module is not ready. Added a 1s return delay before sending is completed.
+
+[Quectel_Android_RIL_Driver_V3.4.99]
+1.9X07 platform does not use RIL to send AT+CNMA to module to confirm the receiving status of SMS
+
+[Quectel_Android_RIL_Driver_V3.4.98]
+1. Solve the unisoc module USB mode dial crash problem
+2. Remove the first four bits of MEID 0x00
+
+[Quectel_Android_RIL_Driver_V3.4.9]
+1.Add onWaitSubInfoReady when requestSIM_IO is executed to AT+QCCID
+
+[Quectel_Android_RIL_Driver_V3.4.7]
+1.Added module model judgment for reporting GMT time
+
+[Quectel_Android_RIL_Driver_V3.4.6]
+1.Solved the problem of NDK compiling RIL library in high Android version printing not in Radio buffer
+2.Added the GMT time judgment for reporting the EC20 model
+
+[Quectel_Android_RIL_Driver_V3.4.5]
+1.Added automatic retrieval of libnetutils.so and libcutils.so in the /apex directory.
+2.Solve the problem of probability dump when RIL library handles dial-up disconnection.
+
+[Quectel_Android_RIL_Driver_V3.4.4]
+1.Modify the problem that 2g cannot send text messages.
+
+[Quectel_Android_RIL_Driver_V3.4.3]
+1.Qualcomm pcie nics require up rmnet_mhi0
+
+[Quectel_Android_RIL_Driver_V3.4.3]
+1.The RM500Q pcie NIC can be up only when its name is RMnet_mhi0.
+2.EC600N module pass +CTZE: reported time time GMT time,Increase judgment distinction.
+3.Add daylight saving time when converting local time to GMT. Subtract daylight saving time from the conversion.
+
+[Quectel_Android_RIL_Driver_V3.4.2]
+1.support UC200A
+2.Added invalid ipv6 address detection to solve the problem of slow first ping of domain names
+
+[Quectel_Android_RIL_Driver_V3.4.1]
+1.support L76K GLL nmea
+2.support EM060K
+3.fix wtpci do_query
+4.fix parseServingCell_5G
+5.fix modem parsing sms report ">" instead of "> "
+6.reduce number of gps config files
+7.support ZDA Nmea
+
+[Quectel_Android_RIL_Driver_V3.4.0]
+1.Added SUPPORT_MDM_RNDis switch control to support Qualcomm MDM module RNDIS network card mode
+
+[Quectel_Android_RIL_Driver_V3.3.99]
+1 support EM05G
+
+[Quectel_Android_RIL_Driver_V3.3.98]
+1 support EC800G
+
+[Quectel_Android_RIL_Driver_V3.3.97]
+1 CellIdentity 中是multiline不是singleline否则CellIdentity为空上层不会自动拨号 
+2 pcie中展锐的vid写错了另外展锐的试探打开FD的时候需要()起来
+[Quectel_Android_RIL_Driver_V3.3.96]
+1.Android versions after 8.1 directly return the RIL_Init call for RILD
+
+[Quectel_Android_RIL_Driver_V3.3.95]
+1.The value RIL_CELL_INFO_TYPE_NONE should be assigned to cellInfoType when the module is not resident
+
+[Quectel_Android_RIL_Driver_V3.3.93][Castle]
+1.improve the action of LOG print when ql-ndk.c dlopen libcutils failed
+2.Added unisoc EC200D
+
+[Quectel_Android_RIL_Driver_v3.3.92][Castle]
+1.recode ql-pci.c and fix port name cause sometimes the path isn't which i thought
+2.set ZHANRUI pci mode to normal
+
+[Quectel_Android_RIL_Driver_V3.3.91]
+1. Add EC800N adaptation.
+2. Add the manifest_{sku}. XML file path parsing in the ODM directory.
+3.Fixed the FAILURE to report IP addresses caused by abnormal zhanrui AT
+4.Remove the reboot RILd mechanism
+5.Make the libnetutils and libcutils paths into configuration files for the customer to fill in
+6.Fix the error in the PCIE IP address
+
+[Quectel_Android_RIL_Driver_V3.3.90]
+1.Add AT+CSQ instruction return value RSSI is 99 invalid value judgment.
+2.Set the timeout duration of the recv() and send() functions when obtaining the IP address of a NIC to 3 seconds.
+3.Fix RIL_UNSOL_NITZ_TIME_RECEIVED Incorrect year and last parameter with a space.
+
+[Quectel_Android_RIL_Driver_V3.3.89]
+1.Added LTE ONLY and WCDMA ONLY network locking support for ASR modules
+
+[Quectel_Android_RIL_Driver_V3.3.88]
+1.Remove the logic that the RIL library disconnects modules from the network when switching network modes. The modules
+will be disconnected automatically when switching network modes.
+
+[Quectel_Android_RIL_Driver_V3.3.87]
+1.Adds DNS strings first and last character detection, or removes Spaces if they are Spaces.  Fixed RIL library parsing 
+crash in some cases when modules return DNS strings with Spaces.
+
+[Quectel_Android_RIL_Driver_V3.3.86]
+1.unisoc platform 4G 5G model dial related instructions are different, do distinguish processing. 
+
+[Quectel_Android_RIL_Driver_V3.3.80]
+1. support MTK platform
+
+[Quectel_Android_RIL_Driver_V3.3.70]
+1. ATT 3g bypass
+2. support qcom platform ECM/rndis mode
+3. support EM06K
+4. support android12 
+5. avoid gsm cdma keeping switch when use verizon sim
+6. due to platform difference roll back ASR ipv6 address report use config file to control it ,default to use dhcp getting    ipv4 address only
+
+[Quectel_Android_RIL_Driver_V3.3.60]
+1. fix ASR report time error
+2. if AP is also zhanrui chip pci need to check again to confirm module exsiting
+3. support ASR's platform ipv6 setup_data_call
+4. fix some error when unlock pin
+5. support verizon compatible with normal operator
+6. support report emergency broadcast
+
+[Quectel_Android_RIL_Driver_V3.3.50]
+1. support BG95 PPP
+2. support EC200A
+3. ql_is_5G() used to indentify if support 5G, not chip type
+4. fix wrong memcpy when no detect usb modem
+
+[Quectel_Android_RIL_Driver_V3.3.40]
+1. add android version 70 coresponding to RIL version 12
+2. fix the problem that the network card under rndis is not recognized
+3. update user guide
+4. modify the requestdeviceidentity section
+5. add evdo_rssi signal conversion
+6. support pcie RM500U
+7. add a 'usbnet' option to conf
+
+[Quectel_Android_RIL_Driver_V3.3.30]
+1. support EC600
+2. CGDCOUNT not support IPv4, so change it to IP
+3. fix cmux mode cannot obtain NMEA port
+4. add autosuspend function on cmux mode
+5. add tools of mpstat and iperf
+6. fix a former bug in old version of RM500 DIAL
+7. support IRadio1.3/1.4
+8. support EC200S
+9. support RM500U module
+
+[Quectel_Android_RIL_Driver_V3.3.20]
+1. Android9.0 support ISAP 1.2
+2. if established multipul dataprofile's DataCall don't need to report RIL_UNSOL_DATA_CALL_LIST_CHANGED otherwise will interfere other connections
+3. pdp only support ipv4 should be pdp_type not auth_type
+4. remove AT data_interface this AT need reboot to take effect and if not reboot this will block AT command
+5. CTZE local time convert to GMT time
+6. add RM500Voice Config
+7. change pdp type to compatible with Android 10
+
+[Quectel_Android_RIL_Driver_V3.3.10]
+1. fix at_tok_scanf use memory after free
+2. when register 5G_SA, use C5GREG to query PS/CS state
+3. when register 5G_SA, get signalstrengh by RSPR in AT+QENG="servingcell"
+4. support switch 5g networkPreferrence
+5. if android version is lower than android10 then don't use 5g setNetWorkPreferrence
+6. fix a logical error in last version of using data5gRegistration add AT to check MEID
+
+[Quectel_Android_RIL_Driver_V3.3.00]
+1. change CNMI prevent the same sms reporting twice and imeisv
+2. support IRadioSap VTS test (Android10)
+3. support IRadioConfig VTS test (Android10)
+4. display cdc-wdm patch for android6/10
+5. detect PCIE ports before USB ports
+6. when /dev/mhi_DUN is at port, set usbmodem as urcport
+7. add conf RIL_REQUEST_SHUTDOWN_SUPPORT
+8. decode ACT of cops&cgreg 's type as int not hexint
+
+[Quectel_Android_RIL_Driver_V3.2.0]
+1. update cellInfo function
+2. support radioConfig1.1/1.2
+3. add RADIO CAPABILITY for 5G modem
+4. update RIL_REQUEST_DEVICE_IDENTITY function
+5. update preferredNetworkType function
+6. add Add configuration items for manifest.xml path
+7. support IRadio 1.4
+
+[Quectel_Android_RIL_Driver_V3.1.0]
+1. support fota
+2. make sure sim pin could show up and add config could remember the last time's pin code
+3. add one more situation which needs clear dataStall's package counts
+4. support pci
+
+[Quectel_Android_RIL_Driver_V3.0.0]
+1. support EC200H
+2. update for BGxx
+3. Modify at timeout algorithm
+4. fix: mbim disconnect, not report data call change event
+5. add: query data call state in requestDataCallList()
+6. fix wrong close usbmon fd
+7. add cdc-wdm patch for android5
+
+[Quectel_Android_RIL_Driver_V2.9.0]
+1. Add ASR module to get the at command of operator IP
+2. add ril-ecm
+3. Support multi-party calls
+4. set 4 bytes aligned for mbim parameters
+5. support IRadio1.2
+6. add tools/qfirehose qlog
+7. support UL AGG
+
+[Quectel_Android_RIL_Driver_V2.8.0]
+1. add qmi revoke and fix some problem when mms retry
+2. improve the first positioning speed at boot
+3. support EC200S-CN
+4. make volte conference call can hangup each paticipator
+5. change rx_urb_size 32KB to 16KB. if set as 32KB, X55 will rx wrong pkt
+
+[Quectel_Android_RIL_Driver_V2.7.0]
+1. support EC100Y-CN
+2. modify the match of android_version
+3. add AT&T test case
+4. fix sim card hotplug out/in, but ril do not report sim state change to RILJ
+5. support multi setup data call
+
+[Quectel_Android_RIL_Driver_V2.6.0]
+1. add get cell Info
+2. fix ril unreport sim pulled out when sim pin
+3. modify sim status when card do hotplug in both normal state and locked state like pin or puk
+4. modify requestSetPreferredNetworkType when module is ASR
+5. add OMA part
+
+[Quectel_Android_RIL_Driver_V2.5.0]
+1. support EG20&RG500
+2. reconstruct QMI&MBIM code
+3. close datafwd
+4. remove unused MBIM command
+5. fix VTS setNetworkSelectionModeManual&iccCloseLogicalChannel fail
+
+[Quectel_Android_RIL_Driver_V2.4.0]
+1. fix quectel-CM compile issue
+2. fix some memory leak error
+3. MBIM support IPv6
+4. add EG20&RG500
+
+[Quectel_Android_RIL_Driver_V2.3.0]
+1. it is not necessary to turn off GPS before injecting time / Xtra
+2. support sim hot plugging
+3. fix a former bug that is caused by pthread without a wait so in gobi mode setupdata may goes ahead of detached thread
+
+[Quectel_Android_RIL_Driver_V2.2.0]
+Three years ago, it was no longer reflected
